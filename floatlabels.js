@@ -51,12 +51,13 @@
                 var placeholderText     = thisElement.attr('placeholder');
                 var floatingText        = thisElement.data('label');
                 var extraClasses        = thisElement.data('class');
+                var tagName             = thisElement.get(0).tagName;
 
                 if( !extraClasses ) { extraClasses = ''; }
                 if( !floatingText || floatingText === '' ) { floatingText = placeholderText; }
 
                 if( floatingText ) {
-                    thisElement.wrap('<div class="floatlabel-wrapper" style="position:relative"></div>');
+                    thisElement.wrap('<div class="floatlabel-wrapper floatlabel-for-' + tagName.toLowerCase() + '" style="position:relative"></div>');
                     thisElement.before('<label for="' + elementID + '" class="label-floatlabel ' + settings.labelClass + ' ' + extraClasses + '">' + floatingText + '</label>');
                     this.$label = thisElement.prev('label');
                     this.$label.css({
