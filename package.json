@@ -1,0 +1,22 @@
+{
+  "name": "floatlabels.js",
+  "version": "1.0",
+  "description": "Fork of probots-io/floatlabels.js",
+  "main": "floatlabels.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nulle/floatlabels.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nulle/floatlabels.js/issues"
+  },
+  "homepage": "https://github.com/nulle/floatlabels.js#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
