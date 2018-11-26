@@ -57,7 +57,12 @@
                 if( !floatingText || floatingText === '' ) { floatingText = placeholderText; }
 
                 if( floatingText ) {
-                    thisElement.wrap('<div class="floatlabel-wrapper floatlabel-for-' + tagName.toLowerCase() + '" style="position:relative"></div>');
+                	var labelClasses = ['floatlabel-wrapper'];
+                	labelClasses.push('floatlabel-for-' + tagName.toLowerCase());
+                	(thisElement.attr('class') || '').split(' ').forEach(function(cl){
+                		labelClasses.push('floatlabel-for-class-' + cl);
+                	});
+                    thisElement.wrap('<div class="' + labelClasses.join(' ') + '" style="position:relative"></div>');
                     thisElement.before('<label for="' + elementID + '" class="label-floatlabel ' + settings.labelClass + ' ' + extraClasses + '">' + floatingText + '</label>');
                     this.$label = thisElement.prev('label');
                     this.$label.css({
