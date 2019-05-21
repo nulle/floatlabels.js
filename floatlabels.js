@@ -80,6 +80,8 @@
                         'color'                         : self.settings.blurColor
                     });
 
+                    this.isCustomSelect = thisElement.hasClass('custom-select');
+
                     thisElement.on('keyup blur change', function( e ) {
                         self.checkValue( e );
                     });
@@ -121,8 +123,12 @@
                         'opacity'                       : '1'
                     });
 
-                    self.$element.addClass('active-floatlabel');
-                    self.$element.parent().parent().find('.select2-selection__rendered').addClass('active-floatlabel');
+                    if (self.isCustomSelect) {
+                        self.$element.parent().parent().find('.select2-selection__rendered').addClass('active-floatlabel');
+                    } else {
+                        self.$element.addClass('active-floatlabel');
+                    }
+
                 }, 50);
             },
             hideLabel: function() {
@@ -135,8 +141,12 @@
                     'opacity'                       : '0'
                 });
 
-                self.$element.removeClass('active-floatlabel');
-                self.$element.parent().parent().find('.select2-selection__rendered').removeClass('active-floatlabel');
+                if (self.isCustomSelect) {
+                    self.$element.parent().parent().find('.select2-selection__rendered').removeClass('active-floatlabel');
+                } else {
+                    self.$element.removeClass('active-floatlabel');
+                }
+
                 window.setTimeout(function() {
                     // since transition duration can be relatively long, only hide if still has same setting
                     if (self.$element.data('flout') === '0') {
